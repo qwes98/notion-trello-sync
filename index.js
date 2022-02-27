@@ -1,33 +1,7 @@
-import { Client } from "@notionhq/client"
-import { config } from 'dotenv'
+import {addItem, queryDb, retriveDb} from "./utils/requests.js";
 
-config()
+const retrive_result = await retriveDb()
+const query_result = await queryDb()
 
-const notion = new Client({ auth: process.env.NOTION_KEY })
-
-const databaseId = process.env.NOTION_DATABASE_ID
-
-async function addItem(text) {
-    try {
-        const response = await notion.pages.create({
-            parent: { database_id: databaseId },
-            properties: {
-                title: {
-                    title:[
-                        {
-                            "text": {
-                                "content": text
-                            }
-                        }
-                    ]
-                }
-            },
-        })
-        console.log(response)
-        console.log("Success! Entry added.")
-    } catch (error) {
-        console.error(error.body)
-    }
-}
-
-addItem("Test")
+console.log(retrive_result)
+console.log(query_result)
