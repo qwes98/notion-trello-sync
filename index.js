@@ -1,7 +1,7 @@
-import {addItem, queryDb, retriveDb} from "./utils/requests.js";
+import { fetchMyTasks, fetchMainDbInfo } from "./utils/requests.js";
 
-const retrive_result = await retriveDb()
-const query_result = await queryDb()
+const mainDbInfo = await fetchMainDbInfo()
+const myTasks= await fetchMyTasks()
 
-console.log(retrive_result)
-console.log(query_result)
+console.log(mainDbInfo)
+console.log(myTasks)
